@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luigy Roso — CV</title>
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --fg: #f5f5f7;
+            --accent: #2997ff;
+            --accent2: #bf5af2;
+            --muted: #86868b;
+            --card-bg: rgba(255,255,255,0.04);
+            --card-border: rgba(255,255,255,0.08);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* ── Utility ── */
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Navigation ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            background: rgba(10, 10, 10, 0.72);
+            border-bottom: 1px solid var(--card-border);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 52px;
+        }
+        nav .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        nav .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        nav .nav-links a:hover { color: var(--fg); }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding-top: 52px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(41,151,255,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 50%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            margin-top: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--muted);
+            font-weight: 400;
+            max-width: 600px;
+        }
+        .hero .cta {
+            margin-top: 2.5rem;
+            display: inline-flex;
+            gap: 1rem;
+        }
+        .hero .cta a {
+            padding: 0.75rem 2rem;
+            border-radius: 980px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta .primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .cta .primary:hover { background: #0077ed; }
+        .cta .secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid rgba(41,151,255,0.4);
+        }
+        .cta .secondary:hover { border-color: var(--accent); }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator span {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--muted);
+            border-bottom: 2px solid var(--muted);
+            transform: rotate(45deg);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* ── Section Headings ── */
+        section { padding: 8rem 0; }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 580px;
+        }
+
+        /* ── About ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            opacity: 0.9;
+        }
+        .about-text p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+        .stats-row {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .stat h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+
+        /* ── Timeline ── */
+        .timeline-section { position: relative; }
+
+        .timeline {
+            position: relative;
+            margin-top: 5rem;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 20px rgba(41,151,255,0.5);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(even)::before {
+            background: var(--accent2);
+            box-shadow: 0 0 20px rgba(191,90,242,0.5);
+        }
+
+        .timeline-year {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-item:nth-child(even) .timeline-year { color: var(--accent2); }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .timeline-card:hover {
+            border-color: rgba(41,151,255,0.3);
+            transform: translateX(6px);
+        }
+        .timeline-card h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-card .role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        .timeline-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ── Skills ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .skill-card:hover {
+            border-color: rgba(41,151,255,0.3);
+            transform: translateY(-4px);
+        }
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .skill-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .skill-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .skill-tags span {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 980px;
+            background: rgba(41,151,255,0.1);
+            color: var(--accent);
+            border: 1px solid rgba(41,151,255,0.2);
+        }
+
+        /* ── Contact ── */
+        .contact-section {
+            text-align: center;
+            padding: 10rem 0;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            padding: 0.8rem 2rem;
+            border-radius: 980px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--fg);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .contact-link:hover {
+            border-color: var(--accent);
+            background: rgba(41,151,255,0.08);
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .stats-row { gap: 1.5rem; }
+            nav .nav-links a { margin-left: 1rem; font-size: 0.75rem; }
+            section { padding: 5rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">LR</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#journey">Journey</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="reveal">Luigy Roso</h1>
+        <p class="subtitle reveal">[Your headline — e.g. "Building the future at the intersection of technology and business"]</p>
+        <div class="cta reveal">
+            <a href="#journey" class="primary">Explore My Journey</a>
+            <a href="#contact" class="secondary">Get In Touch</a>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">About</p>
+                <h2 class="section-title">Driven by curiosity.<br>Defined by impact.</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-photo reveal">
+                    LR
+                </div>
+                <div class="about-text reveal">
+                    <p>[Brief professional summary — who you are, what drives you, and your overarching mission. 2–3 paragraphs.]</p>
+                    <p>[Second paragraph: core philosophy, what differentiates you.]</p>
+                    <div class="stats-row">
+                        <div class="stat">
+                            <h3>7+</h3>
+                            <p>Years of Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>X+</h3>
+                            <p>Projects Delivered</p>
+                        </div>
+                        <div class="stat">
+                            <h3>X</h3>
+                            <p>Industries</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline / Journey -->
+    <section id="journey" class="timeline-section">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">Journey</p>
+                <h2 class="section-title">A trajectory of growth.</h2>
+                <p class="section-subtitle">Every role shaped who I am. Here's the path from 2019 to today.</p>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">2019</p>
+                    <div class="timeline-card">
+                        <h3>[Company / Project Name]</h3>
+                        <p class="role">[Your Role]</p>
+                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">2020</p>
+                    <div class="timeline-card">
+                        <h3>[Company / Project Name]</h3>
+                        <p class="role">[Your Role]</p>
+                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">2021</p>
+                    <div class="timeline-card">
+                        <h3>[Company / Project Name]</h3>
+                        <p class="role">[Your Role]</p>
+                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">2022 – 2023</p>
+                    <div class="timeline-card">
+                        <h3>[Company / Project Name]</h3>
+                        <p class="role">[Your Role]</p>
+                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">2024 – Present</p>
+                    <div class="timeline-card">
+                        <h3>[Company / Project Name]</h3>
+                        <p class="role">[Your Role]</p>
+                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">Skills</p>
+                <h2 class="section-title">What I bring to the table.</h2>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#9889;</div>
+                    <h3>[Skill Category 1]</h3>
+                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-tags">
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#128640;</div>
+                    <h3>[Skill Category 2]</h3>
+                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-tags">
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127919;</div>
+                    <h3>[Skill Category 3]</h3>
+                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-tags">
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#128161;</div>
+                    <h3>[Skill Category 4]</h3>
+                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-tags">
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                        <span>[Tool/Tech]</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section">
+        <div class="container reveal">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Let's build something<br>extraordinary.</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">Open to opportunities, collaborations, and conversations.</p>
+            <div class="contact-links">
+                <a href="mailto:your@email.com" class="contact-link">Email</a>
+                <a href="#" class="contact-link">LinkedIn</a>
+                <a href="#" class="contact-link">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Luigy Roso. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
