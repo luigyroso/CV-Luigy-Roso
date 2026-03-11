@@ -307,29 +307,56 @@
         .metrics {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1rem;
+            gap: 0.7rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--card-border);
         }
         .metric {
             display: inline-flex;
-            align-items: baseline;
-            gap: 0.35rem;
-            padding: 0.35rem 0.85rem;
-            border-radius: 980px;
-            background: rgba(0,113,227,0.06);
-            border: 1px solid rgba(0,113,227,0.12);
-            font-size: 0.8rem;
-            color: var(--fg);
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15rem;
+            padding: 0.6rem 1rem;
+            border-radius: 12px;
+            background: rgba(0,113,227,0.04);
+            border: 1px solid rgba(0,113,227,0.1);
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-align: center;
+            min-width: 80px;
+            opacity: 0;
+            transform: scale(0.85) translateY(8px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .visible .metric {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .visible .metric:nth-child(1) { transition-delay: 0.15s; }
+        .visible .metric:nth-child(2) { transition-delay: 0.25s; }
+        .visible .metric:nth-child(3) { transition-delay: 0.35s; }
+        .visible .metric:nth-child(4) { transition-delay: 0.45s; }
+        .visible .metric:nth-child(5) { transition-delay: 0.55s; }
         .metric strong {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--accent);
-            font-size: 0.9rem;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        .metric:hover {
+            transform: scale(1.06);
+            border-color: rgba(0,113,227,0.3);
         }
         .timeline-item:nth-child(even) .metric strong { color: var(--accent2); }
         .timeline-item:nth-child(even) .metric {
-            background: rgba(162,89,255,0.06);
-            border-color: rgba(162,89,255,0.12);
+            background: rgba(162,89,255,0.04);
+            border-color: rgba(162,89,255,0.1);
+        }
+        .timeline-item:nth-child(even) .metric:hover {
+            border-color: rgba(162,89,255,0.3);
         }
 
         /* ── Skills ── */
@@ -378,6 +405,80 @@
             color: var(--accent);
             border: 1px solid rgba(0,113,227,0.15);
         }
+
+        /* ── Projects ── */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            border-color: rgba(0,113,227,0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+        .project-preview {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, rgba(0,113,227,0.08), rgba(162,89,255,0.08));
+            overflow: hidden;
+            position: relative;
+        }
+        .project-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-card:hover .project-preview img {
+            transform: scale(1.03);
+        }
+        .project-info {
+            padding: 1.5rem 1.8rem 1.8rem;
+        }
+        .project-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.4rem;
+        }
+        .project-info .project-desc {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .project-links {
+            display: flex;
+            gap: 0.7rem;
+        }
+        .project-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .project-links .gh-link {
+            background: var(--fg);
+            color: var(--bg);
+        }
+        .project-links .gh-link:hover { opacity: 0.85; }
+        .project-links .live-link {
+            background: rgba(0,113,227,0.08);
+            color: var(--accent);
+            border: 1px solid rgba(0,113,227,0.2);
+        }
+        .project-links .live-link:hover { border-color: var(--accent); }
 
         /* ── Contact ── */
         .contact-section {
@@ -436,6 +537,7 @@
                 <a href="#journey">Journey</a>
                 <a href="#education">Education</a>
                 <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -493,22 +595,10 @@
             <div class="reveal">
                 <p class="section-label">Journey</p>
                 <h2 class="section-title">A trajectory of growth.</h2>
-                <p class="section-subtitle">From Brisbane to Bogota to Miami — every role shaped who I am.</p>
+                <p class="section-subtitle">From startups to global brands — every role shaped who I am.</p>
             </div>
 
             <div class="timeline">
-
-                <div class="timeline-item reveal">
-                    <p class="timeline-year">Feb 2016 – Jun 2017</p>
-                    <div class="timeline-card">
-                        <h3>The Flying Cock</h3>
-                        <p class="role">Assistant Manager — Brisbane, Australia</p>
-                        <p>First professional experience abroad. Managed operations of a high-volume bar including food ordering, billing, and customer satisfaction. Occasionally oversaw the full team as acting manager.</p>
-                        <div class="metrics">
-                            <span class="metric"><strong>15</strong> staff managed</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="timeline-item reveal">
                     <p class="timeline-year">Nov 2018 – Nov 2019</p>
@@ -517,9 +607,9 @@
                         <p class="role">Co-Founder — Bogota</p>
                         <p>Co-founded a cocktail delivery company, self-bootstrapped from day one with zero VC funding. Owned the entire business roadmap, product management, supply chain, and inventory. Built and launched the product catalog and led customer acquisition.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>~1,000</strong> units sold</span>
-                            <span class="metric"><strong>$0</strong> VC funding</span>
-                            <span class="metric"><strong>1yr</strong> bootstrapped</span>
+                            <span class="metric"><strong>~1,000</strong>units sold</span>
+                            <span class="metric"><strong>$0</strong>VC funding</span>
+                            <span class="metric"><strong>1yr</strong>bootstrapped</span>
                         </div>
                     </div>
                 </div>
@@ -531,11 +621,11 @@
                         <p class="role">Junior Product Manager — Colombia</p>
                         <p>Led an 8-person team of designers, developers, and a marketing specialist for an event software platform. Implemented a workflow management system from scratch, managed CRM for 200+ clients, and launched a loyalty program with 4 tiers.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>8</strong> team members</span>
-                            <span class="metric"><strong>45+</strong> tasks/week</span>
-                            <span class="metric"><strong>200+</strong> CRM clients</span>
-                            <span class="metric"><strong>4</strong> features launched</span>
-                            <span class="metric"><strong>-50%</strong> onboarding friction</span>
+                            <span class="metric"><strong>8</strong>team members</span>
+                            <span class="metric"><strong>45+</strong>tasks/week</span>
+                            <span class="metric"><strong>200+</strong>CRM clients</span>
+                            <span class="metric"><strong>4</strong>features shipped</span>
+                            <span class="metric"><strong>-50%</strong>onboarding friction</span>
                         </div>
                     </div>
                 </div>
@@ -547,9 +637,9 @@
                         <p class="role">Trade Marketing Trainee — Bogota (South LATAM)</p>
                         <p>Worked at this global consumer goods leader (Rubbermaid, Sharpie, Coleman, Yankee Candle). Indirectly managed a 200+ person sales force and owned the incentives program. Direct contact with B2B customers and retailers, planning year-round roadmaps alongside the South LATAM Manager.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>200+</strong> sales force</span>
-                            <span class="metric"><strong>$40K/yr</strong> incentives managed</span>
-                            <span class="metric"><strong>200+</strong> store coverage</span>
+                            <span class="metric"><strong>200+</strong>sales force</span>
+                            <span class="metric"><strong>$40K/yr</strong>incentives managed</span>
+                            <span class="metric"><strong>200+</strong>store coverage</span>
                         </div>
                     </div>
                 </div>
@@ -561,10 +651,10 @@
                         <p class="role">Product Manager — Bogota</p>
                         <p>Product &amp; commercial lead at this Bogota-based Startup Studio. Led strategic pivoting for MVPs and scale-ups, managed 5+ multidisciplinary teams in parallel, and built product roadmaps and vision from scratch for 7+ products. Increased new clients by 2x over six months through commercial calls with strategic focus.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>7+</strong> product roadmaps</span>
-                            <span class="metric"><strong>5+</strong> parallel teams</span>
-                            <span class="metric"><strong>2x</strong> client growth (6mo)</span>
-                            <span class="metric"><strong>10+</strong> B2C products</span>
+                            <span class="metric"><strong>7+</strong>product roadmaps</span>
+                            <span class="metric"><strong>5+</strong>parallel teams</span>
+                            <span class="metric"><strong>2x</strong>client growth</span>
+                            <span class="metric"><strong>10+</strong>B2C products</span>
                         </div>
                     </div>
                 </div>
@@ -576,8 +666,8 @@
                         <p class="role">Co-Founder &amp; Head of Product</p>
                         <p>Led end-to-end product development across e-commerce, payments, and domains. Achieved 16,000 engaged leads in the first month through performance marketing. Launched MVP in under 2 weeks and iterated through continuous feedback loops.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>16K</strong> leads in month 1</span>
-                            <span class="metric"><strong>&lt;2 weeks</strong> to MVP</span>
+                            <span class="metric"><strong>16K</strong>leads in month 1</span>
+                            <span class="metric"><strong>&lt;2wk</strong>to MVP</span>
                         </div>
                     </div>
                 </div>
@@ -589,10 +679,10 @@
                         <p class="role">Product &amp; Project Manager — Independent Contractor</p>
                         <p>Achieved Top 3% contractor status and Top Rated Plus badge. Led product strategy and execution for U.S.-based B2B tech clients, guiding teams through full product lifecycles with on-time, on-budget delivery of innovative SaaS solutions.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>Top 3%</strong> on Upwork</span>
-                            <span class="metric"><strong>100%</strong> job success rate</span>
-                            <span class="metric"><strong>12</strong> clients served</span>
-                            <span class="metric"><strong>Top Rated Plus</strong> badge</span>
+                            <span class="metric"><strong>Top 3%</strong>on Upwork</span>
+                            <span class="metric"><strong>100%</strong>job success</span>
+                            <span class="metric"><strong>12</strong>clients served</span>
+                            <span class="metric"><strong>Top Rated+</strong>badge</span>
                         </div>
                     </div>
                 </div>
@@ -604,9 +694,9 @@
                         <p class="role">Chief of Staff | Head of Delivery Excellence — Richmond, VA</p>
                         <p>Right hand to the CEO — collaborated with the executive team to determine and prioritize business strategies. Managed strategic initiatives from ideation to implementation, defined KPIs for team performance, led workshops, assessed risk on business decisions, and provided operational oversight across the organization.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>C-Suite</strong> strategic partner</span>
-                            <span class="metric"><strong>KPI</strong> frameworks built</span>
-                            <span class="metric"><strong>20%</strong> faster delivery</span>
+                            <span class="metric"><strong>C-Suite</strong>strategic partner</span>
+                            <span class="metric"><strong>KPI</strong>frameworks built</span>
+                            <span class="metric"><strong>20%</strong>faster delivery</span>
                         </div>
                     </div>
                 </div>
@@ -618,10 +708,10 @@
                         <p class="role">Product Manager — Miami / Medellin</p>
                         <p>Leading a multi-product portfolio at this digital product studio serving Bacardi, Ryder, and Sunbelt. Spearheaded the Freepour web app launch (Bacardi &amp; Diageo bartender education platform), transitioning from native to web. Drove engagement growth from 55% to 83% within three months and scaled the user base from 150K to 170K in six months through KPI-driven prioritization and structured experimentation.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>170K+</strong> registered users</span>
-                            <span class="metric"><strong>55%→83%</strong> engagement</span>
-                            <span class="metric"><strong>+20K</strong> users in 6mo</span>
-                            <span class="metric"><strong>3</strong> products simultaneously</span>
+                            <span class="metric"><strong>170K+</strong>registered users</span>
+                            <span class="metric"><strong>55→83%</strong>engagement</span>
+                            <span class="metric"><strong>+20K</strong>users in 6mo</span>
+                            <span class="metric"><strong>3</strong>products managed</span>
                         </div>
                     </div>
                 </div>
@@ -633,10 +723,10 @@
                         <p class="role">Principal Product Manager — Bogota</p>
                         <p>Founding and sole PM of this mobility marketplace connecting buyers and sellers. Owned the full 0→1 product lifecycle — from concept validation and user research to MVP development, launch, and iteration. Built all core features (listings, search, auth, payments, dealer workflows) and created the foundational PRDs, user stories, and acceptance criteria. Established all product processes, rituals, and documentation now used across the company. Coordinated GTM planning across marketing and operations.</p>
                         <div class="metrics">
-                            <span class="metric"><strong>0→1</strong> product lifecycle</span>
-                            <span class="metric"><strong>Sole PM</strong> founding role</span>
-                            <span class="metric"><strong>Full-stack</strong> marketplace</span>
-                            <span class="metric"><strong>GTM</strong> launch led</span>
+                            <span class="metric"><strong>0→1</strong>product lifecycle</span>
+                            <span class="metric"><strong>Sole PM</strong>founding role</span>
+                            <span class="metric"><strong>Full-stack</strong>marketplace</span>
+                            <span class="metric"><strong>GTM</strong>launch led</span>
                         </div>
                     </div>
                 </div>
@@ -736,6 +826,61 @@
                         <span>English (Native/Bilingual)</span>
                         <span>Spanish (Native)</span>
                         <span>Remote-first</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Side Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">Side Projects</p>
+                <h2 class="section-title">Building on the side.</h2>
+                <p class="section-subtitle">Personal projects where I explore ideas, ship fast, and learn by doing.</p>
+            </div>
+
+            <div class="project-grid">
+
+                <div class="project-card reveal">
+                    <div class="project-preview">
+                        <img src="preview-fitness.png" alt="Tu Entrenamiento — Fitness App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Tu Entrenamiento</h3>
+                        <p class="project-desc">Mobile-first PPL workout tracker built as a single HTML file. Apple-inspired UI in Spanish with animated GIFs from ExerciseDB, equipment-busy alternatives, rest timers, and localStorage persistence. Built for my parents.</p>
+                        <div class="skill-tags" style="margin-bottom: 1rem;">
+                            <span>HTML/CSS/JS</span>
+                            <span>Mobile-first</span>
+                            <span>Zero Dependencies</span>
+                            <span>GitHub Pages</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/luigyroso/fitness" class="gh-link" target="_blank">GitHub</a>
+                            <a href="https://luigyroso.github.io/fitness/" class="live-link" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-preview">
+                        <img src="preview-flipfinder.png" alt="Flip Finder — Apartment Flipping Tool">
+                    </div>
+                    <div class="project-info">
+                        <h3>Flip Finder</h3>
+                        <p class="project-desc">Bogota apartment flipping deal-flow tool. Scrapes Metrocuadrado &amp; Finca Raiz APIs, filters by ROI potential, and surfaces investment opportunities. Runs entirely in-browser with zero backend.</p>
+                        <div class="skill-tags" style="margin-bottom: 1rem;">
+                            <span>Web Scraping</span>
+                            <span>API Integration</span>
+                            <span>Real Estate</span>
+                            <span>Single-file App</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/luigyroso/flipfinder" class="gh-link" target="_blank">GitHub</a>
+                            <a href="https://luigyroso.github.io/flipfinder/" class="live-link" target="_blank">Live Demo</a>
+                        </div>
                     </div>
                 </div>
 
