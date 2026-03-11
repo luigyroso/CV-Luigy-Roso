@@ -9,13 +9,13 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #0a0a0a;
-            --fg: #f5f5f7;
-            --accent: #2997ff;
-            --accent2: #bf5af2;
-            --muted: #86868b;
-            --card-bg: rgba(255,255,255,0.04);
-            --card-border: rgba(255,255,255,0.08);
+            --bg: #fbfbfd;
+            --fg: #1d1d1f;
+            --accent: #0071e3;
+            --accent2: #a259ff;
+            --muted: #6e6e73;
+            --card-bg: rgba(0,0,0,0.02);
+            --card-border: rgba(0,0,0,0.08);
         }
 
         html { scroll-behavior: smooth; }
@@ -51,7 +51,7 @@
             z-index: 100;
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            background: rgba(10, 10, 10, 0.72);
+            background: rgba(251, 251, 253, 0.72);
             border-bottom: 1px solid var(--card-border);
         }
         nav .container {
@@ -93,7 +93,7 @@
             transform: translateX(-50%);
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(41,151,255,0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0,113,227,0.06) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero h1 {
@@ -101,7 +101,7 @@
             font-weight: 700;
             letter-spacing: -0.04em;
             line-height: 1.05;
-            background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 50%, var(--accent2) 100%);
+            background: linear-gradient(135deg, #1d1d1f 0%, var(--accent) 50%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -134,9 +134,9 @@
         .cta .secondary {
             background: transparent;
             color: var(--accent);
-            border: 1px solid rgba(41,151,255,0.4);
+            border: 1px solid rgba(0,113,227,0.35);
         }
-        .cta .secondary:hover { border-color: var(--accent); }
+        .cta .secondary:hover { border-color: var(--accent); background: rgba(0,113,227,0.05); }
 
         .scroll-indicator {
             position: absolute;
@@ -194,12 +194,12 @@
             width: 100%;
             aspect-ratio: 1;
             border-radius: 24px;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            opacity: 0.9;
+            overflow: hidden;
+        }
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .about-text p {
             color: var(--muted);
@@ -258,12 +258,12 @@
             height: 14px;
             border-radius: 50%;
             background: var(--accent);
-            box-shadow: 0 0 20px rgba(41,151,255,0.5);
+            box-shadow: 0 0 16px rgba(0,113,227,0.35);
             z-index: 1;
         }
         .timeline-item:nth-child(even)::before {
             background: var(--accent2);
-            box-shadow: 0 0 20px rgba(191,90,242,0.5);
+            box-shadow: 0 0 16px rgba(162,89,255,0.35);
         }
 
         .timeline-year {
@@ -284,7 +284,7 @@
             transition: border-color 0.3s, transform 0.3s;
         }
         .timeline-card:hover {
-            border-color: rgba(41,151,255,0.3);
+            border-color: rgba(0,113,227,0.25);
             transform: translateX(6px);
         }
         .timeline-card h3 {
@@ -320,7 +320,7 @@
             transition: border-color 0.3s, transform 0.3s;
         }
         .skill-card:hover {
-            border-color: rgba(41,151,255,0.3);
+            border-color: rgba(0,113,227,0.25);
             transform: translateY(-4px);
         }
         .skill-icon {
@@ -347,9 +347,9 @@
             font-size: 0.75rem;
             padding: 0.3rem 0.8rem;
             border-radius: 980px;
-            background: rgba(41,151,255,0.1);
+            background: rgba(0,113,227,0.07);
             color: var(--accent);
-            border: 1px solid rgba(41,151,255,0.2);
+            border: 1px solid rgba(0,113,227,0.15);
         }
 
         /* ── Contact ── */
@@ -377,7 +377,7 @@
         }
         .contact-link:hover {
             border-color: var(--accent);
-            background: rgba(41,151,255,0.08);
+            background: rgba(0,113,227,0.06);
         }
 
         /* ── Footer ── */
@@ -407,6 +407,7 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#journey">Journey</a>
+                <a href="#education">Education</a>
                 <a href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -416,7 +417,7 @@
     <!-- Hero -->
     <section class="hero">
         <h1 class="reveal">Luigy Roso</h1>
-        <p class="subtitle reveal">[Your headline — e.g. "Building the future at the intersection of technology and business"]</p>
+        <p class="subtitle reveal">Digital Product Manager — Building and scaling products across B2B &amp; B2C markets</p>
         <div class="cta reveal">
             <a href="#journey" class="primary">Explore My Journey</a>
             <a href="#contact" class="secondary">Get In Touch</a>
@@ -435,23 +436,23 @@
             </div>
             <div class="about-grid">
                 <div class="about-photo reveal">
-                    LR
+                    <img src="profile.png" alt="Luigy Roso">
                 </div>
                 <div class="about-text reveal">
-                    <p>[Brief professional summary — who you are, what drives you, and your overarching mission. 2–3 paragraphs.]</p>
-                    <p>[Second paragraph: core philosophy, what differentiates you.]</p>
+                    <p>Results-oriented Product Manager with 6+ years of experience leading cross-functional teams to build and scale digital solutions. From co-founding startups to managing products for global brands like Bacardi, I bring an execution-first mindset shaped by real ownership.</p>
+                    <p>I thrive at the intersection of business strategy and technical delivery — fluent in Agile, data-driven decision-making, and UX/UI collaboration. Former founder with a bias for action and a track record of turning ideas into shipped products.</p>
                     <div class="stats-row">
                         <div class="stat">
-                            <h3>7+</h3>
+                            <h3>6+</h3>
                             <p>Years of Experience</p>
                         </div>
                         <div class="stat">
-                            <h3>X+</h3>
-                            <p>Projects Delivered</p>
+                            <h3>10+</h3>
+                            <p>Products Delivered</p>
                         </div>
                         <div class="stat">
-                            <h3>X</h3>
-                            <p>Industries</p>
+                            <h3>70K+</h3>
+                            <p>Users Grown</p>
                         </div>
                     </div>
                 </div>
@@ -471,47 +472,74 @@
             <div class="timeline">
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">2019</p>
+                    <p class="timeline-year">Dec 2018 – Jul 2019</p>
                     <div class="timeline-card">
-                        <h3>[Company / Project Name]</h3>
-                        <p class="role">[Your Role]</p>
-                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                        <h3>Jigger!</h3>
+                        <p class="role">Co-Founder</p>
+                        <p>Built and launched 25 products, with 3+ successfully sold. Led customer acquisition, business strategy, and end-to-end product development from scratch.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">2020</p>
+                    <p class="timeline-year">Jul 2019 – Jan 2020</p>
                     <div class="timeline-card">
-                        <h3>[Company / Project Name]</h3>
-                        <p class="role">[Your Role]</p>
-                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                        <h3>Peewah</h3>
+                        <p class="role">Junior Product Manager</p>
+                        <p>Managed CRM tools and product development for an event software platform. Launched 4 product features and reduced onboarding friction by 50%.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">2021</p>
+                    <p class="timeline-year">Nov 2020 – Jul 2021</p>
                     <div class="timeline-card">
-                        <h3>[Company / Project Name]</h3>
-                        <p class="role">[Your Role]</p>
-                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                        <h3>Newell Brands</h3>
+                        <p class="role">Trade Marketing Trainee — LATAM</p>
+                        <p>Coordinated logistics and imports for LATAM marketing operations at this global consumer goods leader (Rubbermaid, Sharpie, Coleman, Yankee Candle). Supported planning of commercial strategies spanning 200+ stores across the region.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">2022 – 2023</p>
+                    <p class="timeline-year">May 2021 – Sep 2022</p>
                     <div class="timeline-card">
-                        <h3>[Company / Project Name]</h3>
-                        <p class="role">[Your Role]</p>
-                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                        <h3>Pappcorn</h3>
+                        <p class="role">Product &amp; Project Manager — Bogota</p>
+                        <p>Managed 10+ B2C products and 75+ tasks with a 12-person team at this Bogota-based Startup Studio (600+ projects, 94% client recurrence). Defined product vision, wireframes, and roadmaps across cross-functional teams. Improved sprint performance and doubled client base during tenure.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">2024 – Present</p>
+                    <p class="timeline-year">Aug 2022 – Jul 2023</p>
                     <div class="timeline-card">
-                        <h3>[Company / Project Name]</h3>
-                        <p class="role">[Your Role]</p>
-                        <p>[Description of what you did, impact you made, skills you developed.]</p>
+                        <h3>Zuppils</h3>
+                        <p class="role">Co-Founder &amp; Head of Product</p>
+                        <p>Led end-to-end product development across e-commerce, payments, and domains. Achieved 16,000 engaged leads in the first month through performance marketing. Launched MVP in under 2 weeks.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">Aug 2022 – May 2024</p>
+                    <div class="timeline-card">
+                        <h3>Upwork</h3>
+                        <p class="role">Product &amp; Project Manager (Freelance)</p>
+                        <p>Delivered a 100% success rate for B2B tech clients in the U.S., leading product strategy and execution. Managed agile teams and delivered scalable SaaS solutions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">Feb 2023 – Sep 2023</p>
+                    <div class="timeline-card">
+                        <h3>BKO</h3>
+                        <p class="role">Head of Delivery Excellence &amp; Chief of Staff</p>
+                        <p>Defined and implemented KPIs and process audits for organizational efficiency. Conducted workshops to improve cross-team collaboration. Streamlined product operations, enhancing delivery timelines and cost-effectiveness.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">May 2024 – Present</p>
+                    <div class="timeline-card">
+                        <h3>Double Nines</h3>
+                        <p class="role">Product Manager — Miami / Medellin</p>
+                        <p>Leading 3 simultaneous product initiatives at this digital product studio serving clients like Bacardi, Ryder, and Sunbelt. Grew the Bacardi Freepour bartender education platform by 10K+ users in under a year. Spearheaded a full platform redesign from native app to webapp, improving UX and performance metrics by 30%.</p>
                     </div>
                 </div>
 
@@ -531,48 +559,107 @@
 
                 <div class="skill-card reveal">
                     <div class="skill-icon">&#9889;</div>
-                    <h3>[Skill Category 1]</h3>
-                    <p>[Brief description of expertise in this area.]</p>
+                    <h3>Product Management</h3>
+                    <p>End-to-end product lifecycle ownership — from discovery and roadmapping to launch and iteration.</p>
                     <div class="skill-tags">
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
+                        <span>Product Roadmapping</span>
+                        <span>Agile / Scrum</span>
+                        <span>Go-to-Market</span>
+                        <span>MVP Development</span>
                     </div>
                 </div>
 
                 <div class="skill-card reveal">
-                    <div class="skill-icon">&#128640;</div>
-                    <h3>[Skill Category 2]</h3>
-                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-icon">&#128202;</div>
+                    <h3>Data &amp; Analytics</h3>
+                    <p>Data-driven decision-making using KPIs, SQL queries, and dashboards to optimize features and inform strategy.</p>
                     <div class="skill-tags">
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
+                        <span>SQL</span>
+                        <span>Looker Studio</span>
+                        <span>KPI Frameworks</span>
+                        <span>A/B Testing</span>
                     </div>
                 </div>
 
                 <div class="skill-card reveal">
-                    <div class="skill-icon">&#127919;</div>
-                    <h3>[Skill Category 3]</h3>
-                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-icon">&#127912;</div>
+                    <h3>UX/UI &amp; Design</h3>
+                    <p>Close collaboration with design teams — wireframing, prototyping, and translating user needs into intuitive interfaces.</p>
                     <div class="skill-tags">
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
+                        <span>Figma</span>
+                        <span>Wireframing</span>
+                        <span>User Research</span>
+                        <span>Prototyping</span>
                     </div>
                 </div>
 
                 <div class="skill-card reveal">
-                    <div class="skill-icon">&#128161;</div>
-                    <h3>[Skill Category 4]</h3>
-                    <p>[Brief description of expertise in this area.]</p>
+                    <div class="skill-icon">&#128736;</div>
+                    <h3>Tools &amp; Execution</h3>
+                    <p>Fluent in the tools that keep teams aligned and products shipping on time.</p>
                     <div class="skill-tags">
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
-                        <span>[Tool/Tech]</span>
+                        <span>Jira</span>
+                        <span>ClickUp</span>
+                        <span>Trello</span>
+                        <span>Asana</span>
+                        <span>CRM Systems</span>
                     </div>
                 </div>
 
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127758;</div>
+                    <h3>B2B &amp; B2C Strategy</h3>
+                    <p>Experience across both markets — from SaaS freelancing for U.S. clients to consumer-facing products in LATAM.</p>
+                    <div class="skill-tags">
+                        <span>B2B SaaS</span>
+                        <span>B2C Growth</span>
+                        <span>Performance Marketing</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127891;</div>
+                    <h3>Leadership &amp; Languages</h3>
+                    <p>Cross-functional team leadership with bilingual fluency — equally effective in English and Spanish.</p>
+                    <div class="skill-tags">
+                        <span>Team Leadership</span>
+                        <span>English (Professional)</span>
+                        <span>Spanish (Native)</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <div class="reveal">
+                <p class="section-label">Education</p>
+                <h2 class="section-title">Academic foundation.</h2>
+            </div>
+
+            <div class="skills-grid" style="margin-top: 3rem;">
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127466;&#127480;</div>
+                    <h3>Master's in Digital Business</h3>
+                    <p>Universidad Rey Juan Carlos, Spain<br><span style="color:var(--accent); font-size:0.85rem;">2023 – 2024</span></p>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127464;&#127476;</div>
+                    <h3>Bachelor in Business Administration</h3>
+                    <p>Universidad Externado de Colombia<br>Emphasis in Finance &amp; Innovation<br><span style="color:var(--accent); font-size:0.85rem;">2015 – 2021</span></p>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127941;</div>
+                    <h3>Certifications</h3>
+                    <p style="font-size: 0.9rem;">
+                        Brand Management — University of London (2020)<br>
+                        Become a Product Manager — Udemy (2019)<br>
+                        De Cero a Product Manager — Soy Startup Latam (2022)
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -584,9 +671,9 @@
             <h2 class="section-title">Let's build something<br>extraordinary.</h2>
             <p class="section-subtitle" style="margin: 0 auto;">Open to opportunities, collaborations, and conversations.</p>
             <div class="contact-links">
-                <a href="mailto:your@email.com" class="contact-link">Email</a>
-                <a href="#" class="contact-link">LinkedIn</a>
-                <a href="#" class="contact-link">GitHub</a>
+                <a href="mailto:luigyroso@gmail.com" class="contact-link">luigyroso@gmail.com</a>
+                <a href="https://linkedin.com/in/luigyroso" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="tel:+573046754722" class="contact-link">(+57) 304-675-4722</a>
             </div>
         </div>
     </section>
