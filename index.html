@@ -304,6 +304,33 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+        .metric {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.35rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 980px;
+            background: rgba(0,113,227,0.06);
+            border: 1px solid rgba(0,113,227,0.12);
+            font-size: 0.8rem;
+            color: var(--fg);
+        }
+        .metric strong {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        .timeline-item:nth-child(even) .metric strong { color: var(--accent2); }
+        .timeline-item:nth-child(even) .metric {
+            background: rgba(162,89,255,0.06);
+            border-color: rgba(162,89,255,0.12);
+        }
 
         /* ── Skills ── */
         .skills-grid {
@@ -417,7 +444,7 @@
     <!-- Hero -->
     <section class="hero">
         <h1 class="reveal">Luigy Roso</h1>
-        <p class="subtitle reveal">Digital Product Manager — Building and scaling products across B2B &amp; B2C markets</p>
+        <p class="subtitle reveal">AI-Native Senior Product Manager — Growth &amp; Revenue Optimization | B2C Platforms | Data-Driven Execution</p>
         <div class="cta reveal">
             <a href="#journey" class="primary">Explore My Journey</a>
             <a href="#contact" class="secondary">Get In Touch</a>
@@ -439,20 +466,20 @@
                     <img src="profile.png" alt="Luigy Roso">
                 </div>
                 <div class="about-text reveal">
-                    <p>Results-oriented Product Manager with 6+ years of experience leading cross-functional teams to build and scale digital solutions. From co-founding startups to managing products for global brands like Bacardi, I bring an execution-first mindset shaped by real ownership.</p>
-                    <p>I thrive at the intersection of business strategy and technical delivery — fluent in Agile, data-driven decision-making, and UX/UI collaboration. Former founder with a bias for action and a track record of turning ideas into shipped products.</p>
+                    <p>AI-native Product Leader operating at the intersection of growth, revenue, and scalable digital systems. Currently leading a multi-product portfolio at Double Nines — including Freepour (Bacardi &amp; Diageo), a B2C platform serving 170K+ users. Drove engagement from 55% to 83% in three months.</p>
+                    <p>Expertise spans B2C platforms and B2B SaaS ecosystems, with full ownership across discovery, PRDs, roadmap governance, sprint execution, API integrations, launch strategy, and post-launch optimization. Former co-founder with a bias for action — built AI-enhanced product systems that compress discovery cycles and elevate cross-functional alignment.</p>
                     <div class="stats-row">
                         <div class="stat">
-                            <h3>6+</h3>
+                            <h3>7+</h3>
                             <p>Years of Experience</p>
                         </div>
                         <div class="stat">
-                            <h3>10+</h3>
-                            <p>Products Delivered</p>
+                            <h3>170K+</h3>
+                            <p>Users Reached</p>
                         </div>
                         <div class="stat">
-                            <h3>70K+</h3>
-                            <p>Users Grown</p>
+                            <h3>100%</h3>
+                            <p>Freelance Success</p>
                         </div>
                     </div>
                 </div>
@@ -466,17 +493,34 @@
             <div class="reveal">
                 <p class="section-label">Journey</p>
                 <h2 class="section-title">A trajectory of growth.</h2>
-                <p class="section-subtitle">Every role shaped who I am. Here's the path from 2019 to today.</p>
+                <p class="section-subtitle">From Brisbane to Bogota to Miami — every role shaped who I am.</p>
             </div>
 
             <div class="timeline">
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">Dec 2018 – Jul 2019</p>
+                    <p class="timeline-year">Feb 2016 – Jun 2017</p>
                     <div class="timeline-card">
-                        <h3>Jigger!</h3>
-                        <p class="role">Co-Founder</p>
-                        <p>Built and launched 25 products, with 3+ successfully sold. Led customer acquisition, business strategy, and end-to-end product development from scratch.</p>
+                        <h3>The Flying Cock</h3>
+                        <p class="role">Assistant Manager — Brisbane, Australia</p>
+                        <p>First professional experience abroad. Managed operations of a high-volume bar including food ordering, billing, and customer satisfaction. Occasionally oversaw the full team as acting manager.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>15</strong> staff managed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">Nov 2018 – Nov 2019</p>
+                    <div class="timeline-card">
+                        <h3>Jigger</h3>
+                        <p class="role">Co-Founder — Bogota</p>
+                        <p>Co-founded a cocktail delivery company, self-bootstrapped from day one with zero VC funding. Owned the entire business roadmap, product management, supply chain, and inventory. Built and launched the product catalog and led customer acquisition.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>~1,000</strong> units sold</span>
+                            <span class="metric"><strong>$0</strong> VC funding</span>
+                            <span class="metric"><strong>1yr</strong> bootstrapped</span>
+                        </div>
                     </div>
                 </div>
 
@@ -484,8 +528,15 @@
                     <p class="timeline-year">Jul 2019 – Jan 2020</p>
                     <div class="timeline-card">
                         <h3>Peewah</h3>
-                        <p class="role">Junior Product Manager</p>
-                        <p>Managed CRM tools and product development for an event software platform. Launched 4 product features and reduced onboarding friction by 50%.</p>
+                        <p class="role">Junior Product Manager — Colombia</p>
+                        <p>Led an 8-person team of designers, developers, and a marketing specialist for an event software platform. Implemented a workflow management system from scratch, managed CRM for 200+ clients, and launched a loyalty program with 4 tiers.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>8</strong> team members</span>
+                            <span class="metric"><strong>45+</strong> tasks/week</span>
+                            <span class="metric"><strong>200+</strong> CRM clients</span>
+                            <span class="metric"><strong>4</strong> features launched</span>
+                            <span class="metric"><strong>-50%</strong> onboarding friction</span>
+                        </div>
                     </div>
                 </div>
 
@@ -493,8 +544,13 @@
                     <p class="timeline-year">Nov 2020 – Jul 2021</p>
                     <div class="timeline-card">
                         <h3>Newell Brands</h3>
-                        <p class="role">Trade Marketing Trainee — LATAM</p>
-                        <p>Coordinated logistics and imports for LATAM marketing operations at this global consumer goods leader (Rubbermaid, Sharpie, Coleman, Yankee Candle). Supported planning of commercial strategies spanning 200+ stores across the region.</p>
+                        <p class="role">Trade Marketing Trainee — Bogota (South LATAM)</p>
+                        <p>Worked at this global consumer goods leader (Rubbermaid, Sharpie, Coleman, Yankee Candle). Indirectly managed a 200+ person sales force and owned the incentives program. Direct contact with B2B customers and retailers, planning year-round roadmaps alongside the South LATAM Manager.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>200+</strong> sales force</span>
+                            <span class="metric"><strong>$40K/yr</strong> incentives managed</span>
+                            <span class="metric"><strong>200+</strong> store coverage</span>
+                        </div>
                     </div>
                 </div>
 
@@ -502,8 +558,14 @@
                     <p class="timeline-year">May 2021 – Sep 2022</p>
                     <div class="timeline-card">
                         <h3>Pappcorn</h3>
-                        <p class="role">Product &amp; Project Manager — Bogota</p>
-                        <p>Managed 10+ B2C products and 75+ tasks with a 12-person team at this Bogota-based Startup Studio (600+ projects, 94% client recurrence). Defined product vision, wireframes, and roadmaps across cross-functional teams. Improved sprint performance and doubled client base during tenure.</p>
+                        <p class="role">Product Manager — Bogota</p>
+                        <p>Product &amp; commercial lead at this Bogota-based Startup Studio. Led strategic pivoting for MVPs and scale-ups, managed 5+ multidisciplinary teams in parallel, and built product roadmaps and vision from scratch for 7+ products. Increased new clients by 2x over six months through commercial calls with strategic focus.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>7+</strong> product roadmaps</span>
+                            <span class="metric"><strong>5+</strong> parallel teams</span>
+                            <span class="metric"><strong>2x</strong> client growth (6mo)</span>
+                            <span class="metric"><strong>10+</strong> B2C products</span>
+                        </div>
                     </div>
                 </div>
 
@@ -512,16 +574,26 @@
                     <div class="timeline-card">
                         <h3>Zuppils</h3>
                         <p class="role">Co-Founder &amp; Head of Product</p>
-                        <p>Led end-to-end product development across e-commerce, payments, and domains. Achieved 16,000 engaged leads in the first month through performance marketing. Launched MVP in under 2 weeks.</p>
+                        <p>Led end-to-end product development across e-commerce, payments, and domains. Achieved 16,000 engaged leads in the first month through performance marketing. Launched MVP in under 2 weeks and iterated through continuous feedback loops.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>16K</strong> leads in month 1</span>
+                            <span class="metric"><strong>&lt;2 weeks</strong> to MVP</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
-                    <p class="timeline-year">Aug 2022 – May 2024</p>
+                    <p class="timeline-year">Oct 2022 – Jun 2024</p>
                     <div class="timeline-card">
                         <h3>Upwork</h3>
-                        <p class="role">Product &amp; Project Manager (Freelance)</p>
-                        <p>Delivered a 100% success rate for B2B tech clients in the U.S., leading product strategy and execution. Managed agile teams and delivered scalable SaaS solutions.</p>
+                        <p class="role">Product &amp; Project Manager — Independent Contractor</p>
+                        <p>Achieved Top 3% contractor status and Top Rated Plus badge. Led product strategy and execution for U.S.-based B2B tech clients, guiding teams through full product lifecycles with on-time, on-budget delivery of innovative SaaS solutions.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>Top 3%</strong> on Upwork</span>
+                            <span class="metric"><strong>100%</strong> job success rate</span>
+                            <span class="metric"><strong>12</strong> clients served</span>
+                            <span class="metric"><strong>Top Rated Plus</strong> badge</span>
+                        </div>
                     </div>
                 </div>
 
@@ -529,17 +601,43 @@
                     <p class="timeline-year">Feb 2023 – Sep 2023</p>
                     <div class="timeline-card">
                         <h3>BKO</h3>
-                        <p class="role">Head of Delivery Excellence &amp; Chief of Staff</p>
-                        <p>Defined and implemented KPIs and process audits for organizational efficiency. Conducted workshops to improve cross-team collaboration. Streamlined product operations, enhancing delivery timelines and cost-effectiveness.</p>
+                        <p class="role">Chief of Staff | Head of Delivery Excellence — Richmond, VA</p>
+                        <p>Right hand to the CEO — collaborated with the executive team to determine and prioritize business strategies. Managed strategic initiatives from ideation to implementation, defined KPIs for team performance, led workshops, assessed risk on business decisions, and provided operational oversight across the organization.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>C-Suite</strong> strategic partner</span>
+                            <span class="metric"><strong>KPI</strong> frameworks built</span>
+                            <span class="metric"><strong>20%</strong> faster delivery</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
                     <p class="timeline-year">May 2024 – Present</p>
                     <div class="timeline-card">
-                        <h3>Double Nines</h3>
+                        <h3>Double Nines (99s)</h3>
                         <p class="role">Product Manager — Miami / Medellin</p>
-                        <p>Leading 3 simultaneous product initiatives at this digital product studio serving clients like Bacardi, Ryder, and Sunbelt. Grew the Bacardi Freepour bartender education platform by 10K+ users in under a year. Spearheaded a full platform redesign from native app to webapp, improving UX and performance metrics by 30%.</p>
+                        <p>Leading a multi-product portfolio at this digital product studio serving Bacardi, Ryder, and Sunbelt. Spearheaded the Freepour web app launch (Bacardi &amp; Diageo bartender education platform), transitioning from native to web. Drove engagement growth from 55% to 83% within three months and scaled the user base from 150K to 170K in six months through KPI-driven prioritization and structured experimentation.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>170K+</strong> registered users</span>
+                            <span class="metric"><strong>55%→83%</strong> engagement</span>
+                            <span class="metric"><strong>+20K</strong> users in 6mo</span>
+                            <span class="metric"><strong>3</strong> products simultaneously</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <p class="timeline-year">May 2025 – Present</p>
+                    <div class="timeline-card">
+                        <h3>Shifter.com.co</h3>
+                        <p class="role">Principal Product Manager — Bogota</p>
+                        <p>Founding and sole PM of this mobility marketplace connecting buyers and sellers. Owned the full 0→1 product lifecycle — from concept validation and user research to MVP development, launch, and iteration. Built all core features (listings, search, auth, payments, dealer workflows) and created the foundational PRDs, user stories, and acceptance criteria. Established all product processes, rituals, and documentation now used across the company. Coordinated GTM planning across marketing and operations.</p>
+                        <div class="metrics">
+                            <span class="metric"><strong>0→1</strong> product lifecycle</span>
+                            <span class="metric"><strong>Sole PM</strong> founding role</span>
+                            <span class="metric"><strong>Full-stack</strong> marketplace</span>
+                            <span class="metric"><strong>GTM</strong> launch led</span>
+                        </div>
                     </div>
                 </div>
 
@@ -607,24 +705,37 @@
                 </div>
 
                 <div class="skill-card reveal">
+                    <div class="skill-icon">&#129302;</div>
+                    <h3>AI-Native Execution</h3>
+                    <p>Built AI-enhanced product systems — compressing discovery cycles, improving documentation velocity, and strengthening experimentation frameworks.</p>
+                    <div class="skill-tags">
+                        <span>AI Workflows</span>
+                        <span>Experimentation</span>
+                        <span>Discovery Acceleration</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
                     <div class="skill-icon">&#127758;</div>
                     <h3>B2B &amp; B2C Strategy</h3>
-                    <p>Experience across both markets — from SaaS freelancing for U.S. clients to consumer-facing products in LATAM.</p>
+                    <p>Experience across both markets — from SaaS freelancing for U.S. clients to consumer-facing platforms in LATAM and global brands like Bacardi &amp; Diageo.</p>
                     <div class="skill-tags">
                         <span>B2B SaaS</span>
                         <span>B2C Growth</span>
                         <span>Performance Marketing</span>
+                        <span>Revenue Optimization</span>
                     </div>
                 </div>
 
                 <div class="skill-card reveal">
                     <div class="skill-icon">&#127891;</div>
                     <h3>Leadership &amp; Languages</h3>
-                    <p>Cross-functional team leadership with bilingual fluency — equally effective in English and Spanish.</p>
+                    <p>Cross-functional team leadership across LATAM and U.S. markets in remote-first, high-accountability environments. Bilingual fluency.</p>
                     <div class="skill-tags">
                         <span>Team Leadership</span>
-                        <span>English (Professional)</span>
+                        <span>English (Native/Bilingual)</span>
                         <span>Spanish (Native)</span>
+                        <span>Remote-first</span>
                     </div>
                 </div>
 
@@ -649,7 +760,12 @@
                 <div class="skill-card reveal">
                     <div class="skill-icon">&#127464;&#127476;</div>
                     <h3>Bachelor in Business Administration</h3>
-                    <p>Universidad Externado de Colombia<br>Emphasis in Finance &amp; Innovation<br><span style="color:var(--accent); font-size:0.85rem;">2015 – 2021</span></p>
+                    <p>Universidad Externado de Colombia<br>Emphasis in Finance &amp; Innovation<br><span style="color:var(--accent); font-size:0.85rem;">2015 – 2020</span></p>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-icon">&#127462;&#127482;</div>
+                    <h3>Business Studies (Exchange)</h3>
+                    <p>QUT — Queensland University of Technology<br>Brisbane, Australia<br><span style="color:var(--accent); font-size:0.85rem;">2016 – 2017</span></p>
                 </div>
                 <div class="skill-card reveal">
                     <div class="skill-icon">&#127941;</div>
@@ -671,8 +787,9 @@
             <h2 class="section-title">Let's build something<br>extraordinary.</h2>
             <p class="section-subtitle" style="margin: 0 auto;">Open to opportunities, collaborations, and conversations.</p>
             <div class="contact-links">
-                <a href="mailto:luigyroso@gmail.com" class="contact-link">luigyroso@gmail.com</a>
-                <a href="https://linkedin.com/in/luigyroso" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="mailto:luigy.roso@gmail.com" class="contact-link">luigy.roso@gmail.com</a>
+                <a href="https://www.linkedin.com/in/luigyrosoproductmanagement" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="https://calendly.com/luigyroso/30min" class="contact-link" target="_blank">Book a Call</a>
                 <a href="tel:+573046754722" class="contact-link">(+57) 304-675-4722</a>
             </div>
         </div>
