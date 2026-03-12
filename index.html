@@ -517,12 +517,120 @@
             border-top: 1px solid var(--card-border);
         }
 
+        /* ── Mobile Nav Toggle ── */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--fg);
+            margin: 5px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         /* ── Responsive ── */
         @media (max-width: 768px) {
+            .container { padding: 0 1.2rem; }
+            section { padding: 4rem 0; }
+
+            /* Nav: hamburger menu */
+            .nav-toggle { display: block; }
+            nav .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(251, 251, 253, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1.5rem;
+                transform: translateX(100%);
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 100;
+            }
+            nav .nav-links.open {
+                transform: translateX(0);
+            }
+            nav .nav-links a {
+                margin-left: 0;
+                font-size: 1.2rem;
+                color: var(--fg);
+            }
+
+            /* Hero */
+            .hero { min-height: 85vh; padding-top: 52px; }
+            .hero .subtitle { padding: 0 0.5rem; }
+            .hero .cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            .hero .cta a {
+                width: 220px;
+                text-align: center;
+            }
+
+            /* About */
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .stats-row { gap: 1.5rem; }
-            nav .nav-links a { margin-left: 1rem; font-size: 0.75rem; }
-            section { padding: 5rem 0; }
+            .about-photo { max-width: 280px; margin: 0 auto; }
+            .stats-row { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+            .stat h3 { font-size: 1.8rem; }
+
+            /* Timeline */
+            .timeline { padding-left: 28px; margin-top: 3rem; }
+            .timeline::before { left: 8px; }
+            .timeline-item { padding-left: 1.2rem; margin-bottom: 2.5rem; }
+            .timeline-item::before { left: -26px; width: 12px; height: 12px; }
+            .timeline-card { padding: 1.3rem; }
+            .timeline-card h3 { font-size: 1.15rem; }
+            .metrics { gap: 0.5rem; }
+            .metric { min-width: 65px; padding: 0.5rem 0.7rem; font-size: 0.68rem; }
+            .metric strong { font-size: 1.05rem; }
+
+            /* Skills */
+            .skills-grid { gap: 1rem; margin-top: 2.5rem; }
+            .skill-card { padding: 1.5rem; }
+
+            /* Projects */
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 2.5rem;
+            }
+            .project-info { padding: 1.2rem 1.3rem 1.5rem; }
+
+            /* Contact */
+            .contact-section { padding: 5rem 0; }
+            .contact-links { gap: 0.8rem; }
+            .contact-link { padding: 0.7rem 1.5rem; font-size: 0.85rem; }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-row { flex-direction: column; align-items: center; gap: 1rem; }
+            .stat { text-align: center; }
         }
     </style>
 </head>
@@ -532,6 +640,9 @@
     <nav>
         <div class="container">
             <div class="logo">LR</div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#journey">Journey</a>
@@ -963,8 +1074,9 @@
         </div>
     </footer>
 
-    <!-- Scroll Reveal Script -->
+    <!-- Scripts -->
     <script>
+        // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -972,8 +1084,21 @@
                 }
             });
         }, { threshold: 0.15 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const toggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
     </script>
 
 </body>
